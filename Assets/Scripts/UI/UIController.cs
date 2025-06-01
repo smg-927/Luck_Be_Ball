@@ -37,7 +37,7 @@ public class UIController : MonoBehaviour
         GameObject initialwindow = null;
         for(int i =1; i <= 10; i++)
         {
-            initialwindow = Resources.Load<GameObject>("Prefabs/UI/Windows/"+SceneManager.GetActiveScene().name+"/window"+i.ToString());
+            initialwindow = Resources.Load<GameObject>("Prefabs/UI/Window"+i.ToString());
             if(initialwindow != null && initialwindow.GetComponent<Window>().isInitialwindow)
             {
                 break;
@@ -92,7 +92,7 @@ public class UIController : MonoBehaviour
 
         if(!WindowSet.TryGetValue(windowName, out Window newwindow))
         {
-            GameObject initialwindow = Resources.Load<GameObject>("Prefabs/UI/Windows/"+SceneManager.GetActiveScene().name+ "/" + windowName);
+            GameObject initialwindow = Resources.Load<GameObject>($"Prefabs/UI/{windowName}");
             if(initialwindow == null)
             {
                 Debug.LogError($"해당 씬에 initialwindow이 없습니다.");
@@ -123,8 +123,8 @@ public class UIController : MonoBehaviour
     {
         if(!WindowSet.TryGetValue(windowName, out Window newwindow))
         {
-            GameObject initialwindow = Resources.Load<GameObject>("Prefabs/UI/Windows/"+SceneManager.GetActiveScene().name+ "/" + windowName);
-            if(initialwindow == null)
+            GameObject initialwindow = Resources.Load<GameObject>($"Prefabs/UI/{windowName}");
+            if(initialwindow == null)   
             {
                 Debug.LogError($"해당 씬에 "+ windowName+"이 없습니다.");
                 return;

@@ -9,4 +9,11 @@ public class PowerUp : Item
             //파워업 효과
         }
     }
+
+    public override void Destroy()
+    {
+        //파워업 효과   
+
+        base.Destroy();
+    }
 }
