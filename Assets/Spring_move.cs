@@ -3,52 +3,52 @@ using UnityEngine;
 
 public class SpringWithCollision : MonoBehaviour
 {
-    [Header("½ºÇÁ¸µ ¿òÁ÷ÀÓ ¼³Á¤")]
-    public float moveSpeed = 5f;    // ÁÂ¿ì ÀÌµ¿ ¼Óµµ
-    public float chargeSpeed = 2f;    // Â÷Â¡ ½Ã ¾Æ·¡·Î ´Ã¾î³ª´Â ¼Óµµ
-    public float returnSpeed = 10f;   // º¹±Í ½Ã ºü¸¥ ¼Óµµ
-    public float minScaleY = 0.5f;  // ½ºÇÁ¸µÀÌ ¾ÐÃàµÉ ÃÖ¼Ò ºñÀ² (¿ø·¡ Å©±âÀÇ ¸î ¹è)
-    public float maxSpringForce = 20f; // ½ºÇÁ¸µ º¹±Í ½Ã ÃÖ´ë Èû
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")]
+    public float moveSpeed = 5f;            // ï¿½Â¿ï¿½ ï¿½Ìµï¿½ ï¿½Óµï¿½
+    public float chargeSpeed = 2f;          // ï¿½ï¿½Â¡ ï¿½ï¿½ ï¿½Æ·ï¿½ï¿½ï¿½ ï¿½Ã¾î³ªï¿½ï¿½ ï¿½Óµï¿½
+    public float returnSpeed = 10f;         // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½
+    public float minScaleY = 0.5f;          // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    public float maxSpringForce = 20f;      // ï¿½Ö´ï¿½ ï¿½ï¿½
+    public float bounceRadius = 0.5f;       // ï¿½ï¿½ï¿½ï¿½ Æ¨ï¿½Ü³ï¿½ ï¿½Ý°ï¿½
 
-    // Ãæµ¹ ¶Ç´Â Overlap Ã¼Å©¿ë ¹Ý°æ
-    public float bounceRadius = 0.5f;
+    public float minX = -0.3347658f;        // ï¿½Â¿ï¿½ ï¿½Ìµï¿½ ï¿½Ö¼ï¿½ X
+    public float maxX = 0.3548303f;         // ï¿½Â¿ï¿½ ï¿½Ìµï¿½ ï¿½Ö´ï¿½ X
 
     private Rigidbody rb;
-    private Vector3 originalScale;    // ¿ø·¡ ½ºÄÉÀÏ
-    private float currentScaleY;    // ÇöÀç YÃà ½ºÄÉÀÏ
+    private Vector3 originalScale;
+    private float currentScaleY;
     private bool isCharging = false;
     private bool wasChargingLastFrame = false;
+    private Vector3 startPosition;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         originalScale = transform.localScale;
         currentScaleY = originalScale.y;
-
-        // ½ºÇÁ¸µÀº Áß·Â°ú ¹°¸® ¹ÝÀÀÀ» ¹ÞÁö ¾Êµµ·Ï °íÁ¤
+        startPosition = transform.position;
         rb.useGravity = false;
         rb.isKinematic = true;
     }
 
     void Update()
     {
-        // 1) ÁÂ¿ì ÀÌµ¿ (Transform Á÷Á¢ º¯°æ)
+        // 1) ï¿½Â¿ï¿½ ï¿½Ìµï¿½
         float h = 0f;
-        if (Input.GetKey(KeyCode.LeftArrow)) h = -1f;
-        else if (Input.GetKey(KeyCode.RightArrow)) h = 1f;
-        transform.position += new Vector3(h * moveSpeed * Time.deltaTime, 0f, 0f);
+        if (Input.GetKey(KeyCode.LeftArrow)) h = 1f;
+        else if (Input.GetKey(KeyCode.RightArrow)) h = -1f;
 
-        // 2) Â÷Â¡ »óÅÂ °¨Áö
+        Vector3 newPos = transform.position + new Vector3(h * moveSpeed * Time.deltaTime, 0f, 0f);
+        newPos.x = Mathf.Clamp(newPos.x, minX, maxX);
+        transform.position = newPos;
+
+        // 2) ï¿½ï¿½Â¡ ï¿½ï¿½ï¿½ï¿½
         if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
             isCharging = true;
-        }
         if (Input.GetKeyUp(KeyCode.DownArrow))
-        {
             isCharging = false;
-        }
 
-        // 3) ½ºÄÉÀÏ Á¶Àý (¾Æ·¡·Î ¾ÐÃà ¢¢ ¿ø·¡ Å©±â º¹±Í)
+        // 3) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ / ï¿½ï¿½ï¿½ï¿½
         if (isCharging)
         {
             currentScaleY -= chargeSpeed * Time.deltaTime;
@@ -60,66 +60,59 @@ public class SpringWithCollision : MonoBehaviour
             currentScaleY += returnSpeed * Time.deltaTime;
             if (currentScaleY > originalScale.y) currentScaleY = originalScale.y;
         }
+
         transform.localScale = new Vector3(originalScale.x, currentScaleY, originalScale.z);
 
-        // 4) "Â÷Â¡ ¡æ º¹±Í ÀüÈ¯ ¼ø°£"(KeyUp ¼ø°£)¿¡ °øÀ» Æ¨°Ü³¿
-        //    ÀÌ¹ø ÇÁ·¹ÀÓ(isCharging=false)ÀÌ¸ç, ÀÌÀü ÇÁ·¹ÀÓ¿¡´Â isCharging=true ¿´´Ù¸é
+        // 4) ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Æ¨ï¿½ï¿½ï¿½
         if (wasChargingLastFrame && !isCharging)
         {
             BounceNearbyBalls();
         }
 
-        // ´ÙÀ½ ÇÁ·¹ÀÓ ºñ±³¸¦ À§ÇØ »óÅÂ ÀúÀå
         wasChargingLastFrame = isCharging;
+
+        //ï¿½ï¿½ï¿½ï¿½Ä¡
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+
+            transform.position = startPosition;
+        }
+
     }
 
-    // Å°¸¦ ¶¿ ¶§ ½ºÇÁ¸µ ²À´ë±â ±ÙÃ³¿¡ ÀÖ´Â ·°ºñ°øÀ» Ã£¾Æ À§·Î Æ¨°Ü³¿
-    private void BounceNearbyBalls()
+    void BounceNearbyBalls()
     {
-        // 1) ½ºÇÁ¸µ ²À´ë±â(world ÁÂÇ¥) °è»ê
-        //    transform.positionÀº ½ºÇÁ¸µÀÇ Áß½É, 
-        //    localScale.y/2 ¸¸Å­ ¿Ã·Á¾ß ½ºÇÁ¸µ ÃÖ»ó´Ü(YÁÂÇ¥).
         float topY = transform.position.y + (currentScaleY / 2f);
         Vector3 topCenter = new Vector3(transform.position.x, topY, transform.position.z);
 
-        // 2) OverlapSphere·Î ¹Ý°æ(bounceRadius) ³» ¸ðµç ÄÝ¶óÀÌ´õ °¡Á®¿À±â
         Collider[] hits = Physics.OverlapSphere(topCenter, bounceRadius);
         foreach (Collider col in hits)
         {
-            // 3) ÅÂ±×°¡ "RugbyBall"ÀÎ °æ¿ì¿¡¸¸ Ã³¸®
             if (col.CompareTag("RugbyBall"))
             {
                 Rigidbody ballRb = col.attachedRigidbody;
                 if (ballRb != null)
                 {
-                    // 4) ¾ÐÃà Á¤µµ(0~1)¸¦ °è»ê: 
-                    //    0 = ÀüÇô ¾ÐÃà ¾È µÊ, 1 = ¿ÏÀüÈ÷ ÃÖ¼Ò ½ºÄÉÀÏ¿¡ µµ´Þ
                     float compressionRatio = 0f;
                     float fullRange = originalScale.y - (originalScale.y * minScaleY);
                     if (fullRange > 0.0001f)
                     {
                         compressionRatio = (originalScale.y - currentScaleY) / fullRange;
-                        if (compressionRatio < 0f) compressionRatio = 0f;
-                        if (compressionRatio > 1f) compressionRatio = 1f;
+                        compressionRatio = Mathf.Clamp01(compressionRatio);
                     }
 
-                    // 5) ½ÇÁ¦ Àû¿ëÇÒ Èû Å©±â: 
-                    //    ÃÖ´ë ½ºÇÁ¸µ Èû(maxSpringForce) ¡¿ compressionRatio
                     float forceToApply = maxSpringForce * compressionRatio;
-
-                    // °ø¿¡ À§·Î ÈûÀ» °¡ÇÔ
                     ballRb.AddForce(Vector3.up * forceToApply, ForceMode.Impulse);
                 }
             }
         }
     }
 
-    // (Å×½ºÆ®¿ë) Ãæµ¹ ¿µ¿ªÀ» ½Ã°¢È­
     void OnDrawGizmosSelected()
     {
         if (!Application.isPlaying) return;
-
-        // ½ºÇÁ¸µ ²À´ë±â ÁÂÇ¥
         float topY = transform.position.y + (currentScaleY / 2f);
         Vector3 topCenter = new Vector3(transform.position.x, topY, transform.position.z);
 
