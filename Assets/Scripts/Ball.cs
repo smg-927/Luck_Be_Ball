@@ -36,13 +36,13 @@ public class Ball : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            rb.AddForce(new Vector3(-5, 5, 0), ForceMode.Impulse);
-        }
-        if(Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            rb.AddForce(new Vector3(5, 5, 0), ForceMode.Impulse);
-        }
+        // if(Input.GetKeyDown(KeyCode.LeftArrow))
+        // {
+        //     rb.AddForce(new Vector3(-5, 5, 0), ForceMode.Impulse);
+        // }
+        // if(Input.GetKeyDown(KeyCode.RightArrow))
+        // {
+        //     rb.AddForce(new Vector3(5, 5, 0), ForceMode.Impulse);
+        // }
     }
 }

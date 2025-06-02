@@ -3,16 +3,16 @@ using UnityEngine;
 
 public class SpringWithCollision : MonoBehaviour
 {
-    [Header("������ ������ ����")]
-    public float moveSpeed = 5f;            // �¿� �̵� �ӵ�
-    public float chargeSpeed = 2f;          // ��¡ �� �Ʒ��� �þ�� �ӵ�
-    public float returnSpeed = 10f;         // ���� �� ���� �ӵ�
-    public float minScaleY = 0.5f;          // ������ �ּ� ���� ����
-    public float maxSpringForce = 20f;      // �ִ� ��
-    public float bounceRadius = 0.5f;       // ���� ƨ�ܳ� �ݰ�
+    [Header("스프링 기본 설정")]
+    public float moveSpeed = 5f;            // 좌우 이동 속도
+    public float chargeSpeed = 2f;          // 압축 시 아래로 내려가는 속도
+    public float returnSpeed = 10f;         // 복귀 시 올라가는 속도
+    public float minScaleY = 0.5f;          // 스프링 최소 압축 비율
+    public float maxSpringForce = 20f;      // 최대 힘
+    public float bounceRadius = 0.5f;       // 튕김 범위 반지름
 
-    public float minX = -0.3347658f;        // �¿� �̵� �ּ� X
-    public float maxX = 0.3548303f;         // �¿� �̵� �ִ� X
+    public float minX = -0.3347658f;        // 좌우 이동 최소 X
+    public float maxX = 0.3548303f;         // 좌우 이동 최대 X
 
     private Rigidbody rb;
     private Vector3 originalScale;
@@ -33,7 +33,7 @@ public class SpringWithCollision : MonoBehaviour
 
     void Update()
     {
-        // 1) �¿� �̵�
+        // 1) 좌우 이동
         float h = 0f;
         if (Input.GetKey(KeyCode.LeftArrow)) h = 1f;
         else if (Input.GetKey(KeyCode.RightArrow)) h = -1f;
@@ -42,13 +42,13 @@ public class SpringWithCollision : MonoBehaviour
         newPos.x = Mathf.Clamp(newPos.x, minX, maxX);
         transform.position = newPos;
 
-        // 2) ��¡ ����
+        // 2) 압축 중 아래로 내려가는 속도
         if (Input.GetKeyDown(KeyCode.DownArrow))
             isCharging = true;
         if (Input.GetKeyUp(KeyCode.DownArrow))
             isCharging = false;
 
-        // 3) ������ ���� / ����
+        // 3) 압축 중인지 복귀 중인지에 따른 스프링 길이 변화
         if (isCharging)
         {
             currentScaleY -= chargeSpeed * Time.deltaTime;
@@ -63,7 +63,7 @@ public class SpringWithCollision : MonoBehaviour
 
         transform.localScale = new Vector3(originalScale.x, currentScaleY, originalScale.z);
 
-        // 4) ���� ������ �� ƨ���
+        // 4) 압축 중인 마지막 프레임과 복귀 중인 프레임 사이에 튕김 처리
         if (wasChargingLastFrame && !isCharging)
         {
             BounceNearbyBalls();
@@ -71,7 +71,7 @@ public class SpringWithCollision : MonoBehaviour
 
         wasChargingLastFrame = isCharging;
 
-        //����ġ
+        // 초기화
         if (Input.GetKeyDown(KeyCode.Q))
         {
             rb.linearVelocity = Vector3.zero;

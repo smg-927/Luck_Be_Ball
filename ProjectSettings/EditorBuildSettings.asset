@@ -9,10 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/startScene.unity
+    path: Assets/Scenes/startScene.unity
     guid: 8500f5d0326885a479cdf6b851f27b7d
   - enabled: 1
-    path: Assets/pinball.unity
+    path: Assets/Scenes/pinball.unity
     guid: 2a0401070acb8644ca0f7e40484ef80a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
