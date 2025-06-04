@@ -37,14 +37,12 @@ public class SceneController : MonoBehaviour
 
         switch(sceneName)
         {
-            case "MainScreen":
-                //GameManager.Instance.MenuReady();
+            case "Pinball":
+                GameManager.Instance.InitGame();
                 break;
-            case "StageSelect":
-                //GameManager.Instance.StageSelectReady();
+            case "startScene":
                 break;
             case "Ingame":
-                //GameManager.Instance.MappingReady(true);
                 break;
         }
     }

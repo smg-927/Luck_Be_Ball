@@ -52,8 +52,8 @@ public class GameManager : MonoBehaviour
     public void InitGame()
     {
         score = 0;
-        SpawnBall();
         SwitchGameState(GameState.Play);
+        Debug.Log("currnetState: " + currentState);
         ball = FindAnyObjectByType<Ball>().gameObject;
         if (ball == null)
         {
@@ -67,18 +67,20 @@ public class GameManager : MonoBehaviour
         {
             Destroy(ball);
         }
+
         ball = Instantiate(ballPrefab, ballPrefab.transform.position, ballPrefab.transform.rotation);
     }
 
     void Update()
     {
-        if (currentState == GameState.Play)
-        {
+        //if (currentState == GameState.Play)
+        //{
             if (Input.GetKeyDown(KeyCode.Q))
             {
+                Debug.Log("currentState: " + currentState);
                 ResetGame();
             }
-        }
+        //}
     }
 
     private void ResetGame()
