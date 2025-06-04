@@ -758,6 +758,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1449569556}
   - component: {fileID: 1449569555}
+  - component: {fileID: 1449569557}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -777,6 +778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 239e41523708ec04aba5884322063929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballCountMax: 0
   ballPrefab: {fileID: 488695197460464501, guid: 4fd42b06e4bb2ec48a8c5649278e27f7, type: 3}
 --- !u!4 &1449569556
 Transform:
@@ -793,6 +795,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1449569557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449569554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9daf3c89d071a4429b4363a0b730af8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PowerUp: {fileID: 634584603299474288, guid: 468c3e18d4ef8bc4e8d23dd21b304f5d, type: 3}
+  DoubleScore: {fileID: 3338290930967613648, guid: 745a44a774d57c6439605a1cacdae77f, type: 3}
+  BallCountUp: {fileID: 818244536713116258, guid: 1912e562dccb1a84081741b5a617c13f, type: 3}
 --- !u!1 &1605733820
 GameObject:
   m_ObjectHideFlags: 0

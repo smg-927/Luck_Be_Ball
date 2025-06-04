@@ -14,16 +14,6 @@ public class Item : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        // 단순한 사인파 움직임 (0.5f 높이로 1초 주기)
-        float newY = Mathf.Sin(Time.time) * 0.5f;
-        transform.position = new Vector3(transform.position.x, newY, transform.position.z);
-        
-        // 회전
-        transform.Rotate(new Vector3(0, 0.1f, 0));
-    }
-
     public virtual void Destroy()
     {
         Destroy(gameObject);
