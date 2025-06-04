@@ -70,16 +70,6 @@ public class SpringWithCollision : MonoBehaviour
         }
 
         wasChargingLastFrame = isCharging;
-
-        // 초기화
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            rb.linearVelocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-
-            transform.position = startPosition;
-        }
-
     }
 
     void BounceNearbyBalls()
