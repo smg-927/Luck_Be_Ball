@@ -37,7 +37,7 @@ public class SceneController : MonoBehaviour
 
         switch(sceneName)
         {
-            case "Pinball":
+            case "pinball":
                 GameManager.Instance.InitGame();
                 break;
             case "startScene":

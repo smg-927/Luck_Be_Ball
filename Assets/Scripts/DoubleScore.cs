@@ -6,7 +6,7 @@ public class DoubleScore : Item
     {
         if (other.gameObject.CompareTag("Ball"))
         {
-            //점수 2배
+            GameManager.Instance.DoubleScore();
         }
     }
 }
