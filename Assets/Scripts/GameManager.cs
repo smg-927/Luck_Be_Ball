@@ -172,7 +172,7 @@ public class GameManager : MonoBehaviour
 
     public void PowerUp()
     {
-        //파워 업 효과
+        StartCoroutine(PowerUpCoroutine());
     }
 
     public IEnumerator DoubleScoreCoroutine()
@@ -181,7 +181,14 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(10f);
         Scoreweight /= 2;
     }
-
+    
+    public IEnumerator PowerUpCoroutine()
+    {
+        spring.transform.localScale = new Vector3(3f, 3f, 3f);
+        Debug.Log("파워 업");
+        yield return new WaitForSeconds(10f);
+        spring.transform.localScale = new Vector3(1f, 1f, 1f);
+    }
     #endregion
 
 }

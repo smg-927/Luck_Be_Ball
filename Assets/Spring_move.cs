@@ -61,7 +61,7 @@ public class SpringWithCollision : MonoBehaviour
             if (currentScaleY > originalScale.y) currentScaleY = originalScale.y;
         }
 
-        transform.localScale = new Vector3(originalScale.x, currentScaleY, originalScale.z);
+        transform.localScale = new Vector3(transform.localScale.x, currentScaleY, transform.localScale.z);
 
         // 4) 압축 중인 마지막 프레임과 복귀 중인 프레임 사이에 튕김 처리
         if (wasChargingLastFrame && !isCharging)
