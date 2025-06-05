@@ -41,7 +41,7 @@ public class Pumping : Opstacle
         // 새로운 코루틴 시작
         currentBounceCoroutine = StartCoroutine(PumpingCoroutine());
 
-        GameManager.Instance.AddScore(GameManager.Instance.Scoreweight);
+        GameManager.Instance.AddScore((int)GameManager.Instance.Scoreweight);
     }
 
     private IEnumerator PumpingCoroutine()

@@ -1,14 +1,13 @@
 using UnityEngine;
 
-public class PowerUp : Item
+public class Addball : Item
 {
     public override void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("RugbyBall"))
         {
-            GameManager.Instance.PowerUp();
+            GameManager.Instance.AddBall();
         }
         base.OnTriggerEnter(other);
     }
-
 }

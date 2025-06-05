@@ -31,11 +31,10 @@ public class GameManager : MonoBehaviour
     public GameState currentState{get; private set;}
     
     #region 게임 변수
-    public int Scoreweight{get; private set;} = 100;
-    public int score{get; private set;}
-    public int highScore{get; private set;}
+    public long Scoreweight{get; private set;} = 100;
+    public long score{get; private set;}
+    public long highScore{get; private set;}
     public int ballCount{get; private set;}
-    public int ballCountMax;
     #endregion
 
     #region 프리펩
@@ -50,12 +49,21 @@ public class GameManager : MonoBehaviour
         if (currentState == newState) return;
 
         currentState = newState;
+        switch(newState)
+        {
+            case GameState.Play:
+                break;
+            case GameState.GameOver:
+                GameOver();
+                break;
+        }
     }
 
     public void InitGame()
     {
         this.score = 0;
-        ballCount = ballCountMax;
+        ballCount = 10;
+        Debug.Log("ballCount: " + ballCount);
         SwitchGameState(GameState.Play);
         Debug.Log("currentState: " + currentState);
 
@@ -73,6 +81,13 @@ public class GameManager : MonoBehaviour
         {
             SpawnBall();
         }
+
+        Itemspawner itemspawner = this.transform.GetComponent<Itemspawner>();
+        if(itemspawner == null)
+        {
+            Debug.LogError("Itemspawner 컴포넌트를 찾을 수 없습니다.");
+        }
+        itemspawner.SpawnItem();
     }
 
     private void SpawnBall()
@@ -82,7 +97,7 @@ public class GameManager : MonoBehaviour
             Destroy(ball);
         }
 
-        ball = Instantiate(ballPrefab, ballPrefab.transform.position, ballPrefab.transform.rotation);
+        ball = Instantiate(ballPrefab, spring.transform.position+new Vector3(0,0.2f,0), ballPrefab.transform.rotation);
     }
 
     void Update()
@@ -95,13 +110,24 @@ public class GameManager : MonoBehaviour
                 ResetGame();
             }
         }
+        if(currentState == GameState.GameOver)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                InitGame();
+            }
+        }
     }
 
     public void ResetGame()
     {
+        if(ballCount <= 0)
+        {
+            SwitchGameState(GameState.GameOver);
+            return;
+        }
         ballCount--;
         SpawnBall();
-        ResetSpring();
         SwitchGameState(GameState.Play);
     }
 
@@ -115,11 +141,19 @@ public class GameManager : MonoBehaviour
         spring.transform.position = springPosition;
     }
 
+    private void GameOver()
+    {
+        Debug.Log("GameOver");
+        if(score > highScore)
+        {
+            highScore = score;
+        }
+    }
+
     #region 점수관련
     public void AddScore(int score)
     {
         this.score += score;
-        Debug.Log("score: " + this.score);
     }
 
     #endregion
@@ -129,6 +163,16 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Scoreweight: " + Scoreweight);
         StartCoroutine(DoubleScoreCoroutine());
+    }
+
+    public void AddBall()
+    {
+        ballCount++;
+    }
+
+    public void PowerUp()
+    {
+        //파워 업 효과
     }
 
     public IEnumerator DoubleScoreCoroutine()

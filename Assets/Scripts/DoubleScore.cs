@@ -4,9 +4,10 @@ public class DoubleScore : Item
 {
     public override void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Ball"))
+        if (other.gameObject.CompareTag("RugbyBall"))
         {
             GameManager.Instance.DoubleScore();
         }
+        base.OnTriggerEnter(other);
     }
 }

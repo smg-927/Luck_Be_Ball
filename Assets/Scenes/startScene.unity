@@ -778,7 +778,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 239e41523708ec04aba5884322063929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballCountMax: 0
   ballPrefab: {fileID: 488695197460464501, guid: 4fd42b06e4bb2ec48a8c5649278e27f7, type: 3}
 --- !u!4 &1449569556
 Transform:
@@ -810,6 +809,7 @@ MonoBehaviour:
   PowerUp: {fileID: 634584603299474288, guid: 468c3e18d4ef8bc4e8d23dd21b304f5d, type: 3}
   DoubleScore: {fileID: 3338290930967613648, guid: 745a44a774d57c6439605a1cacdae77f, type: 3}
   BallCountUp: {fileID: 818244536713116258, guid: 1912e562dccb1a84081741b5a617c13f, type: 3}
+  itemSpot: {fileID: 11400000, guid: 2303f86dabd10aa4697daede46918902, type: 2}
 --- !u!1 &1605733820
 GameObject:
   m_ObjectHideFlags: 0
