@@ -87,6 +87,11 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("Itemspawner 컴포넌트를 찾을 수 없습니다.");
         }
+        Item[] items = FindObjectsByType<Item>(FindObjectsSortMode.None);
+        foreach(Item item in items)
+        {
+            Destroy(item.gameObject);
+        }
         itemspawner.SpawnItem();
     }
 
