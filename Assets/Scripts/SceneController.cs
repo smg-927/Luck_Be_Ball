@@ -6,7 +6,7 @@ using System.Diagnostics;
 public class SceneController : MonoBehaviour
 {
     public static SceneController Instance { get; private set; }
-
+    public AudioSource ButtonClickSound;
     private void Awake()
     {
         if (Instance == null)
@@ -38,6 +38,10 @@ public class SceneController : MonoBehaviour
         switch(sceneName)
         {
             case "pinball":
+                //if (ButtonClickSound != null)
+                //{
+                //    ButtonClickSound.Play();  // 소리 재생
+                //}
                 GameManager.Instance.InitGame();
                 break;
             case "startScene":
