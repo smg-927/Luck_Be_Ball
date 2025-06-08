@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpringWithCollision : MonoBehaviour
@@ -74,9 +73,10 @@ public class SpringWithCollision : MonoBehaviour
 
     void BounceNearbyBalls()
     {
-        float topY = transform.position.y + (currentScaleY / 2f);
-        Vector3 topCenter = new Vector3(transform.position.x, topY, transform.position.z);
+        float topY = transform.position.y + (currentScaleY / 2f); // 스프링의 상단 Y좌표
+        Vector3 topCenter = new Vector3(transform.position.x, topY, transform.position.z); // 스프링 상단 위치
 
+        // 튕길 범위 안에 있는 모든 콜라이더를 검사
         Collider[] hits = Physics.OverlapSphere(topCenter, bounceRadius);
         foreach (Collider col in hits)
         {
@@ -85,14 +85,16 @@ public class SpringWithCollision : MonoBehaviour
                 Rigidbody ballRb = col.attachedRigidbody;
                 if (ballRb != null)
                 {
+                    // 스프링의 압축 정도 계산 (0 ~ 1 범위)
                     float compressionRatio = 0f;
                     float fullRange = originalScale.y - (originalScale.y * minScaleY);
                     if (fullRange > 0.0001f)
                     {
                         compressionRatio = (originalScale.y - currentScaleY) / fullRange;
-                        compressionRatio = Mathf.Clamp01(compressionRatio);
+                        compressionRatio = Mathf.Clamp01(compressionRatio); // 0 ~ 1 사이로 클램프
                     }
 
+                    // 적용할 힘 계산
                     float forceToApply = maxSpringForce * compressionRatio;
                     ballRb.AddForce(Vector3.up * forceToApply, ForceMode.Impulse);
                 }
@@ -107,6 +109,6 @@ public class SpringWithCollision : MonoBehaviour
         Vector3 topCenter = new Vector3(transform.position.x, topY, transform.position.z);
 
         Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(topCenter, bounceRadius);
+        Gizmos.DrawWireSphere(topCenter, bounceRadius); // 튕김 범위 시각화
     }
 }

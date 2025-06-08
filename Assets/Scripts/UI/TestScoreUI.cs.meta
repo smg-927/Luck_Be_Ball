@@ -1,2 +1,17 @@
 fileFormatVersion: 2
 guid: ecb501e4afd5a4044b6a6ccffb616ad8
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _scoreText: {instanceID: 0}
+  - _highScoreText: {instanceID: 0}
+  - _remainBallText: {instanceID: 0}
+  - faceImage: {instanceID: 0}
+  - neutralFace: {fileID: 21300000, guid: d279a1a3632df164ebb709eb0f88c1e9, type: 3}
+  - surprisedFace: {fileID: 21300000, guid: df04dadcfbaa65844960d3b0c513c5c1, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

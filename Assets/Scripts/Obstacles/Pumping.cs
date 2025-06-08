@@ -9,9 +9,11 @@ public class Pumping : Opstacle
     private Coroutine currentBounceCoroutine;  // 현재 실행 중인 코루틴 참조
     private Vector3 originalScale;  // 원래 크기 저장
 
+    AudioSource sound;
     void Start()
     {
         originalScale = transform.localScale;  // 시작할 때 원래 크기 저장
+        sound = GetComponent<AudioSource>();
     }
 
     public override void OnCollisionEnter(Collision collision)
@@ -19,7 +21,7 @@ public class Pumping : Opstacle
         // 럭비공인지 확인
         Ball ball = collision.gameObject.GetComponent<Ball>();
         if (ball == null) return;
-
+        sound.Play();
         Rigidbody rb = ball.rb;
         Vector3 angular = rb.angularVelocity;
         Vector3 normal = collision.transform.position - transform.position;
