@@ -5,7 +5,11 @@ using System.Runtime.CompilerServices;
 public class BallDetector : MonoBehaviour
 {
     [SerializeField] public Cannon cannon;
-
+    AudioSource sound;
+    void Start()
+    {
+        sound = GetComponent<AudioSource>();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("RugbyBall"))
@@ -21,7 +25,7 @@ public class BallDetector : MonoBehaviour
             yield break;
         }
         ball.GetComponent<Rigidbody>().isKinematic = true;
-
+        sound.Play();
         ball.transform.rotation = Quaternion.Euler(0, 0, -45);
         ball.transform.position = transform.position + new Vector3(0.02f, 0.02f, -0.04f);
 

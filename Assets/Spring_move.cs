@@ -19,7 +19,7 @@ public class SpringWithCollision : MonoBehaviour
     private bool isCharging = false;
     private bool wasChargingLastFrame = false;
     private Vector3 startPosition;
-
+    AudioSource sound;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -28,6 +28,8 @@ public class SpringWithCollision : MonoBehaviour
         startPosition = transform.position;
         rb.useGravity = false;
         rb.isKinematic = true;
+        sound = GetComponent<AudioSource>();
+
     }
 
     void Update()
@@ -83,6 +85,7 @@ public class SpringWithCollision : MonoBehaviour
             if (col.CompareTag("RugbyBall"))
             {
                 Rigidbody ballRb = col.attachedRigidbody;
+                sound.Play();
                 if (ballRb != null)
                 {
                     // 스프링의 압축 정도 계산 (0 ~ 1 범위)
