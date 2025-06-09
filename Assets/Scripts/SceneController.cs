@@ -38,11 +38,10 @@ public class SceneController : MonoBehaviour
         switch(sceneName)
         {
             case "pinball":
-                //if (ButtonClickSound != null)
-                //{
-                //    ButtonClickSound.Play();  // 소리 재생
-                //}
-                GameManager.Instance.InitGame();
+                SceneController.Instance.LoadSceneAsync("pinball");
+                break;
+            case "Animation":
+                //SceneController.Instance.LoadSceneAsync("Animation");
                 break;
             case "startScene":
                 break;

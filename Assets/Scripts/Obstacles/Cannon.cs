@@ -10,10 +10,11 @@ public class Cannon : MonoBehaviour
     
     private Vector3 originalScale;  // 원래 크기
     private Coroutine currentAnimationCoroutine;  // 현재 실행 중인 코루틴
-
+    AudioSource sound;
     void Start()
     {
         originalScale = transform.localScale;  // 시작할 때 원래 크기 저장
+        sound = GetComponent<AudioSource>();
     }
 
     public void Fire(GameObject ball)
@@ -48,6 +49,7 @@ public class Cannon : MonoBehaviour
         Rigidbody ballRb = ball.GetComponent<Rigidbody>();
         if (ballRb != null)
         {
+            sound.Play();
             // 대포의 방향으로 발사
             Vector3 shootDirection = new Vector3(-1f,4,0).normalized;
             ball.SetActive(true);
