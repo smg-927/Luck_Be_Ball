@@ -237,7 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image1: {fileID: 2032030408}
   image2: {fileID: 88061007}
-  displayTime: 2
+  displayTime: 5
   nextSceneName: pinball
 --- !u!4 &128677871
 Transform:

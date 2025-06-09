@@ -6,7 +6,7 @@ using System.Diagnostics;
 public class SceneController : MonoBehaviour
 {
     public static SceneController Instance { get; private set; }
-    public AudioSource ButtonClickSound;
+
     private void Awake()
     {
         if (Instance == null)
@@ -35,13 +35,10 @@ public class SceneController : MonoBehaviour
             yield return null;
         }
 
-        switch(sceneName)
+        switch (sceneName)
         {
             case "pinball":
-                SceneController.Instance.LoadSceneAsync("pinball");
-                break;
-            case "Animation":
-                //SceneController.Instance.LoadSceneAsync("Animation");
+                GameManager.Instance.InitGame();
                 break;
             case "startScene":
                 break;
