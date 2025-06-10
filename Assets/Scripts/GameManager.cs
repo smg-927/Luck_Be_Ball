@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour
     private GameObject ball = null;
     private GameObject spring;
     private Vector3 springPosition;
+    private GameObject itemSpawner;
+    private GameoverControll gameoverControll;
     #endregion
 
     public void SwitchGameState(GameState newState)
@@ -93,6 +95,18 @@ public class GameManager : MonoBehaviour
             Destroy(item.gameObject);
         }
         itemspawner.SpawnItem();
+
+        if(gameoverControll == null)
+        {
+            gameoverControll = FindAnyObjectByType<GameoverControll>();
+        }
+
+        if(gameoverControll == null)
+        {
+            Debug.LogError("GameoverControll 컴포넌트를 찾을 수 없습니다.");
+        }
+
+        gameoverControll.gameObject.SetActive(false);
     }
 
     private void SpawnBall()
@@ -148,7 +162,8 @@ public class GameManager : MonoBehaviour
 
     private void GameOver()
     {
-        Debug.Log("GameOver");
+        gameoverControll.Gameover();
+        
         if(score > highScore)
         {
             highScore = score;

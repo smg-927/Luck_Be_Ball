@@ -1499,6 +1499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballPrefab: {fileID: 488695197460464501, guid: 4fd42b06e4bb2ec48a8c5649278e27f7, type: 3}
+  gameoverUIPrefab: {fileID: 3071853468184360272, guid: 849c3df7b483cbb40b1719d4ea092bff, type: 3}
 --- !u!4 &1449569556
 Transform:
   m_ObjectHideFlags: 0
