@@ -31,7 +31,10 @@ public class Ball : MonoBehaviour
         float angularSpeed = rb.angularVelocity.magnitude;
         Vector3 angularDrag = -rb.angularVelocity.normalized * (angularSpeed * ANGULAR_DRAG_COEFFICIENT);
         rb.AddTorque(angularDrag, ForceMode.Force);
+<<<<<<< HEAD
 
+=======
+>>>>>>> faa421388f34bdf976303e7b05f28d2bef8d2044
     }
 
     void Update()

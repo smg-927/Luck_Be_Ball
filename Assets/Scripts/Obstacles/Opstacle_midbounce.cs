@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 
+=======
+using UnityEditor.Callbacks;
+>>>>>>> faa421388f34bdf976303e7b05f28d2bef8d2044
 using UnityEngine;
 
 public class Opstacle_midbounce : Opstacle
