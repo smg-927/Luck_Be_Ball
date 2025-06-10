@@ -7922,8 +7922,12 @@ PrefabInstance:
       value: 1.15
       objectReference: {fileID: 0}
     - target: {fileID: 3335310950187022335, guid: 444f95d115d17c047a5ca9e960d975d4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.886
+      objectReference: {fileID: 0}
+    - target: {fileID: 3335310950187022335, guid: 444f95d115d17c047a5ca9e960d975d4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.165
+      value: 0.129
       objectReference: {fileID: 0}
     - target: {fileID: 4177997496536770178, guid: 444f95d115d17c047a5ca9e960d975d4, type: 3}
       propertyPath: m_Material
@@ -8499,9 +8503,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd405998a0ceda40954e0210b4caccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseBounceForce: 5
-  spinForceMultiplier: 1.5
-  additionalSpinForce: 5
+  baseBounceForce: 10
+  spinForceMultiplier: 3
+  additionalSpinForce: 6
 --- !u!82 &9085190126349616888
 AudioSource:
   m_ObjectHideFlags: 0
