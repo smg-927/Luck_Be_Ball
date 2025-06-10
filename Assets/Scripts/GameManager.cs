@@ -29,10 +29,6 @@ public class GameManager : MonoBehaviour
     }
 
     public GameState currentState{get; private set;}
-<<<<<<< HEAD
-=======
-    AudioSource sound;
->>>>>>> faa421388f34bdf976303e7b05f28d2bef8d2044
     
     #region 게임 변수
     public long Scoreweight{get; private set;} = 100;
@@ -50,14 +46,6 @@ public class GameManager : MonoBehaviour
     private GameoverControll gameoverControll;
     #endregion
 
-<<<<<<< HEAD
-=======
-    void Start()
-    {
-        sound = GetComponent<AudioSource>();
-    }
-
->>>>>>> faa421388f34bdf976303e7b05f28d2bef8d2044
     public void SwitchGameState(GameState newState)
     {
         if (currentState == newState) return;
@@ -174,15 +162,8 @@ public class GameManager : MonoBehaviour
 
     private void GameOver()
     {
-<<<<<<< HEAD
         gameoverControll.Gameover();
         
-=======
-        Debug.Log("GameOver");
-        Debug.Log($"오디오 클립: {sound.clip.name}, 볼륨: {sound.volume}");
-        sound.Play();
-        gameoverControll.Gameover();
->>>>>>> faa421388f34bdf976303e7b05f28d2bef8d2044
         if(score > highScore)
         {
             highScore = score;
