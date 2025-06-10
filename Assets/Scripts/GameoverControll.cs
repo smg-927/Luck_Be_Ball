@@ -1,10 +1,13 @@
 using UnityEngine;
+using TMPro;
 
 public class GameoverControll : MonoBehaviour
 {
+    [SerializeField] public TextMeshProUGUI scoreText;
     public void Gameover()
     {
         this.gameObject.SetActive(true);
+        scoreText.text = "Final Score: " + GameManager.Instance.score.ToString();
     }
 
     public void Restart()
@@ -17,4 +20,6 @@ public class GameoverControll : MonoBehaviour
     {
         SceneController.Instance.LoadSceneAsync("startScene");
     }
+
+
 }

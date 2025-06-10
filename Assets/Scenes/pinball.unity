@@ -7596,6 +7596,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb411221a4a6c064886a8f03e1885679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 1960819312}
+--- !u!114 &1960819312 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1807085935167683105, guid: 849c3df7b483cbb40b1719d4ea092bff, type: 3}
+  m_PrefabInstance: {fileID: 1960819308}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &1990749480
 AudioSource:
   m_ObjectHideFlags: 0

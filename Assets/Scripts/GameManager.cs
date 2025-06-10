@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     }
 
     public GameState currentState{get; private set;}
+    AudioSource sound;
     
     #region 게임 변수
     public long Scoreweight{get; private set;} = 100;
@@ -45,6 +46,11 @@ public class GameManager : MonoBehaviour
     private GameObject itemSpawner;
     private GameoverControll gameoverControll;
     #endregion
+
+    void Start()
+    {
+        sound = GetComponent<AudioSource>();
+    }
 
     public void SwitchGameState(GameState newState)
     {
@@ -162,8 +168,10 @@ public class GameManager : MonoBehaviour
 
     private void GameOver()
     {
+        Debug.Log("GameOver");
+        Debug.Log($"오디오 클립: {sound.clip.name}, 볼륨: {sound.volume}");
+        sound.Play();
         gameoverControll.Gameover();
-        
         if(score > highScore)
         {
             highScore = score;

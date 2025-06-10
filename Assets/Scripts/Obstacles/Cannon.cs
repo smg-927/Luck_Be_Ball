@@ -45,8 +45,15 @@ public class Cannon : MonoBehaviour
             yield return null;
         }
 
-        // 공 발사
+        if(ball == null)
+        {
+            yield break;
+        }
         Rigidbody ballRb = ball.GetComponent<Rigidbody>();
+
+        // 공 발사
+
+        
         if (ballRb != null)
         {
             sound.Play();
