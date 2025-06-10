@@ -6023,7 +6023,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd405998a0ceda40954e0210b4caccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseBounceForce: 0
+  baseBounceForce: 5
   spinForceMultiplier: 1.5
   additionalSpinForce: 5
 --- !u!82 &1008471378
@@ -7913,6 +7913,18 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 13400000, guid: 0d04dbfb5e9296046b32526b53d2942b, type: 2}
+    - target: {fileID: 3335310950187022335, guid: 444f95d115d17c047a5ca9e960d975d4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3335310950187022335, guid: 444f95d115d17c047a5ca9e960d975d4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3335310950187022335, guid: 444f95d115d17c047a5ca9e960d975d4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.227
+      objectReference: {fileID: 0}
     - target: {fileID: 4177997496536770178, guid: 444f95d115d17c047a5ca9e960d975d4, type: 3}
       propertyPath: m_Material
       value: 
@@ -7929,6 +7941,18 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 13400000, guid: 0d04dbfb5e9296046b32526b53d2942b, type: 2}
+    - target: {fileID: 5440420569387305797, guid: 444f95d115d17c047a5ca9e960d975d4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440420569387305797, guid: 444f95d115d17c047a5ca9e960d975d4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440420569387305797, guid: 444f95d115d17c047a5ca9e960d975d4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.215
+      objectReference: {fileID: 0}
     - target: {fileID: 5983047859795895693, guid: 444f95d115d17c047a5ca9e960d975d4, type: 3}
       propertyPath: m_LocalScale.y
       value: 2
@@ -8475,7 +8499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd405998a0ceda40954e0210b4caccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseBounceForce: 0
+  baseBounceForce: 5
   spinForceMultiplier: 1.5
   additionalSpinForce: 5
 --- !u!82 &9085190126349616888
